@@ -140,7 +140,7 @@
               </div>
             </nav>
           </div>
-          <div class="bg-gray-200 h-full">
+          <div class="bg-gray-100 h-full">
             <div class="m-10">
                 <slot/>
             </div>
