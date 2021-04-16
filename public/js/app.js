@@ -17193,7 +17193,7 @@ __webpack_require__.r(__webpack_exports__);
       uom: "KIT",
       barcode: null,
       discontinued: "Y",
-      photo_path: "(NULL)"
+      photo_path: null
     });
 
     var submit = function submit() {

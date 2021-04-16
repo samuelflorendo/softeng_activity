@@ -120,7 +120,7 @@ export default {
       uom: "KIT",
       barcode: null,
       discontinued: "Y",
-      photo_path: "(NULL)",
+      photo_path: null,
     });
     const submit = () => {
       Inertia.post(route("stock.store"), form,{

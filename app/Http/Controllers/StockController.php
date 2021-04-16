@@ -47,7 +47,7 @@ class StockController extends Controller
                 'uom' => 'required',
                 'barcode' => 'required|numeric',
                 'discontinued' => 'required',
-                'photo_path' => 'required'
+                'photo_path' => 'nullable'
             ]
         );
 
