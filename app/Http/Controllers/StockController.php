@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stock;
+use App\Models\StockCategory;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,7 +29,10 @@ class StockController extends Controller
     public function create()
     {
         //
-        return Inertia::render('Stocks/Create');
+        
+        $stock_categories = StockCategory::all();
+        return Inertia::render('Stocks/Create',
+        ['stock_categories'=>$stock_categories]);
     }
 
     /**

@@ -33,8 +33,7 @@
             <div class="flex flex-col pt-6">
               <label for="stock_category_id">Stock Category ID</label>
               <select class="rounded-md" name="stock_category_id" id="stock_category_id" v-model="form.stock_category_id">
-                <option value="12259">12259</option>
-                <option value="18115">18115</option>
+                <option v-for="item in stock_categories" v-bind:value="item.id" >{{item.id}}</option>
               </select>
               <div class="text-red-700 text-sm">
                 {{ errors.stock_category_id }}
@@ -111,6 +110,7 @@ export default {
   },
   props: {
     errors: Object,
+    stock_categories: Array,
   },
   setup(props, context) {
     const form = reactive({
