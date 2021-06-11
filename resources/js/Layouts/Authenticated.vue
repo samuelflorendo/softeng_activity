@@ -91,6 +91,7 @@
 
             <!-- Page Content -->
             <main>
+                <flash-messages />
                 <slot />
             </main>
         </div>
@@ -103,7 +104,7 @@
     import BreezeDropdownLink from '@/Components/DropdownLink'
     import BreezeNavLink from '@/Components/NavLink'
     import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink'
-
+    import FlashMessages from '@/Components/FlashMessages'
     export default {
         components: {
             BreezeApplicationLogo,
@@ -111,6 +112,7 @@
             BreezeDropdownLink,
             BreezeNavLink,
             BreezeResponsiveNavLink,
+            FlashMessages,
         },
 
         data() {

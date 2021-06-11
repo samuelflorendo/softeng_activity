@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StockCategory;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-
+use Illuminate\Support\Facades\Redirect;
 
 class StockCategoryController extends Controller
 {
@@ -71,7 +71,9 @@ class StockCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $model =StockCategory::find($id);
+
+        return Inertia::render('StockCategories/View',['model'=>$model]);
     }
 
     /**
@@ -94,7 +96,24 @@ class StockCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $request->validate(
+
+            [
+
+                'description' => 'required',
+                'type' => 'required',
+                'stock_account' => 'nullable',
+
+            ]
+
+        );
+
+
+        $model = StockCategory::find($id);
+
+        $model->update($validate);
+
+        return Redirect::route('sc.index')->with('success', "Stock Categorty Updated");
     }
 
     /**
@@ -105,6 +124,13 @@ class StockCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        try{
+            StockCategory::find($id)->delete();
+            return Redirect::route('sc.index')->with('success', 'Stock Category deleted.');
+           }catch (\Exception$e) {
+    
+            return Redirect::route('sc.index')->with('error', $e->getMessage());
+           }
     }
 }

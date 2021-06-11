@@ -24,6 +24,7 @@
                     <th class="px-4 py-3">Type</th>
                     <th class="px-4 py-3">Stock Account</th>
                     <th class="px-4 py-3">Date Created</th>
+                    <th class="px-4 py-3">Action</th>
                 </tr>
                 
                 <tr v-for="item in stock_categories" class="bg-gray-100 border-b border-gray-200">
@@ -32,6 +33,15 @@
                     <td class="px-4 py-3">{{item.type}}</td>
                     <td class="px-4 py-3">{{item.stock_account}}</td>
                     <td class="px-4 py-3">{{item.created_at}}</td>
+                      <td>
+                        <inertia-link :href="route('sc.show',item.id)">
+                          View
+                        </inertia-link>
+
+                            <inertia-link method="delete" :href="route('sc.destroy',item.id)">
+                          Delete
+                        </inertia-link>
+                      </td>
                 </tr> 
                 
             </table>
@@ -43,12 +53,15 @@
 </template>
 
 <script>
-import Layout from "@/Layouts/Layout.vue";
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
 
 export default {
-  layout:Layout,
+  components: {
+    BreezeAuthenticatedLayout
+  },
   props:{
-      stock_categories: Array
+      stock_categories: Array,
+      success:String,
   }
 };
 /*
